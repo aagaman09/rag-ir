@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# rag-ir
-=======
+
 # RAG Application with Phi3 Model and ChromaDB
 
 Welcome to the RAG (Retrieval-Augmented Generation) application repository! This project leverages the Gemini model and ChromaDB to read PDF documents, embed their content, store the embeddings in a database, and perform retrieval-augmented generation.
