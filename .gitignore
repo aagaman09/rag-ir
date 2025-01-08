@@ -1,0 +1,7 @@
+.ipynb_checkpoints/
+env/
+__pycache__
+chroma_data/
+key.py 
+RAG-Workbook.ipynb
+__pycache__
