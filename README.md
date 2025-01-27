@@ -1,21 +1,6 @@
 
 # RAG Application with Gemini and ChromaDB
 
-Welcome to the RAG (Retrieval-Augmented Generation) application repository! This project leverages the Gemini model and ChromaDB to read PDF documents, embed their content, store the embeddings in a database, and perform retrieval-augmented generation.
-
-
-
-## Introduction
-
-This repository contains a RAG application that reads PDF files, generates embeddings using the Alibaba-NLP/gte-large-en-v1.5 model, stores these embeddings in ChromaDB, and performs retrieval-augmented generation to provide contextual answers based on the embedded content. The system is designed to enhance the capability of answering queries by leveraging the context from the embedded documents.
-
-## Features
-
-- **PDF Reading**: Extracts text content from PDF documents.
-- **Embedding Generation**: Utilizes the Alibaba-NLP/gte-large-en-v1.5 model to generate embeddings for the extracted text.
-- **Database Storage**: Stores the generated embeddings in ChromaDB.
-- **Retrieval-Augmented Generation**: Retrieves relevant embeddings from the database and generates contextually accurate responses.
-
 ```bash
    rag-ir/
 ├── main.py
