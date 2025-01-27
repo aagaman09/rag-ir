@@ -16,6 +16,18 @@ This repository contains a RAG application that reads PDF files, generates embed
 - **Database Storage**: Stores the generated embeddings in ChromaDB.
 - **Retrieval-Augmented Generation**: Retrieves relevant embeddings from the database and generates contextually accurate responses.
 
+```bash
+   rag-ir/
+├── main.py
+├── rag/
+│   ├── __init__.py
+│   ├── db.py
+│   ├── document_loader.py
+│   └── llm.py
+├── requirements.txt
+└── README.md
+```
+
 ## Installation
 
 **Note:** On first installation, this script will download the necessary NLTK stopwords, the NLP embedding model, and the large language model (LLM). As a result, the initial execution may take longer than subsequent runs.
