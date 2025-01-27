@@ -14,7 +14,12 @@ print("Embedding function loaded")
 
 
 def get_db_collection(collection_name: str) -> chromadb.Collection:
+    """
+    Get or create a Chroma DB collection.
 
+    :param collection_name: Name of the collection
+    :return: Chroma DB collection
+    """
     try:
         collection = client.get_collection(
             collection_name,
@@ -34,7 +39,14 @@ def get_db_collection(collection_name: str) -> chromadb.Collection:
 def add_to_collection(
     collection: chromadb.Collection, documents: list, ids: list, metadata: list
 ):
+    """
+    Add documents to the Chroma DB collection.
 
+    :param collection: Chroma DB collection
+    :param documents: List of document contents
+    :param ids: List of document IDs
+    :param metadata: List of metadata dictionaries
+    """
     collection.add(
         documents=documents,
         ids=ids,
@@ -44,28 +56,63 @@ def add_to_collection(
 
 
 def query_collection(collection: chromadb.Collection, query_text: str):
+    """
+    Query the Chroma DB collection for relevant documents.
 
+    :param collection: Chroma DB collection
+    :param query_text: Query text
+    :return: Query results
+    """
     try:
         query_results = collection.query(
             query_texts=[query_text],
             n_results=3,
         )
-        print("Query results:", query_results)  # Debug print
         return query_results
 
     except Exception as e:
-        # Catch the exception and print the error message
         print(f"An error occurred while querying the collection: {e}")
         return None
 
 
 def generate_context(query_result: dict):
-    if not query_result or not query_result.get("documents"):
-        return "No relevant context found."
-    
+    """
+    Generate context from query results.
+
+    :param query_result: Query results from Chroma DB
+    :return: Combined context as a string
+    """
     context = ""
     for doc in query_result["documents"]:
         for i in doc:
-            context += i + "\n\n"
-    print("Generated context:", context[:200])  # Debug print first 200 chars
+            context += i
     return context
+
+
+def get_all_documents(collection: chromadb.Collection):
+    """
+    Retrieve all documents from the collection.
+
+    :param collection: Chroma DB collection
+    :return: List of all documents in the collection
+    """
+    try:
+        # Fetch all documents
+        results = collection.get()
+        documents = results["documents"]
+        return documents
+    except Exception as e:
+        print(f"Error retrieving documents: {e}")
+        return None
+    
+def delete_collection(collection_name: str):
+    """
+    Delete a Chroma DB collection.
+
+    :param collection_name: Name of the collection to delete
+    """
+    try:
+        client.delete_collection(collection_name)
+        print(f"Collection '{collection_name}' deleted.")
+    except Exception as e:
+        print(f"Error deleting collection: {e}")
