@@ -2,7 +2,7 @@
 # RAG Application with Gemini and ChromaDB
 
 ```bash
-   rag-ir/
+rag-ir/
 ├── main.py
 ├── rag/
 │   ├── __init__.py
